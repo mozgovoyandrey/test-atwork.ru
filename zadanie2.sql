@@ -18,7 +18,7 @@ FROM category c
 LEFT JOIN category p ON c.id=p.parent_category_id
 WHERE p.id IS NOT NULL
 GROUP BY c.id
-HAVING count(p.id) <= 3
+HAVING count(p.id) <= 3;
 
 
 -- На выборку всех категорий нижнего уровня (т.е. не имеющих детей)
@@ -26,9 +26,9 @@ HAVING count(p.id) <= 3
 SELECT c.*
 FROM category c
 LEFT JOIN category p ON c.id=p.parent_category_id
-WHERE p.id IS NULL
+WHERE p.id IS NULL;
 -- Исключает категории верхнего уровня даже если у них нет потомков
 SELECT c.*
 FROM category c
 LEFT JOIN category p ON c.id=p.parent_category_id
-WHERE p.id IS NULL AND c.parent_category_id IS NOT NULL
+WHERE p.id IS NULL AND c.parent_category_id IS NOT NULL;
